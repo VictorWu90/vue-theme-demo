@@ -1,0 +1,16 @@
+@import '../variables/dark';
+
+body,
+html {
+    background: $bg-color-dark !important;
+    color: $text-color-dark;
+}
+
+button {
+    background: $bg-color-dark !important;
+    color: $text-color-dark;
+    border: 1px solid $text-color-dark;
+    // &:active {
+        
+    // }
+}

@@ -1,0 +1,15 @@
+@import '../variables/light';
+
+body,
+html {
+    background: $bg-color-light !important;
+    color: $text-color-light;
+}
+
+button {
+    color:$text-color-light;
+    border: 1px solid $text-color-light;
+    // &:active {
+
+    // }
+}

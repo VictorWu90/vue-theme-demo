@@ -1,0 +1,21 @@
+//样式重置
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+}
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: hidden;
+    line-height: 1.5;
+}
+
+button {
+    outline:none;
+    padding: 10px 20px;
+}
