@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="button-container">
-            <button>light</button>
-            <button>dark</button>
+            <button @click="lightClick">light</button>
+            <button @click="darkClick">dark</button>
         </div>
         <h1>人民日报钟声：美国一些人玩威胁施压老把戏不得人心</h1>
         <p>
@@ -33,6 +33,26 @@
 export default {
     data() {
         return {};
+    },
+    methods: {
+        lightClick() {
+            let eleLinks = document.querySelectorAll('link[theme]');
+            eleLinks.forEach(eleLink => {
+                eleLink.disabled = true;
+                if (eleLink.getAttribute('theme') === 'theme-light') {
+                    eleLink.disabled = false;
+                }
+            });
+        },
+        darkClick() {
+            let eleLinks = document.querySelectorAll('link[theme]');
+            eleLinks.forEach(eleLink => {
+                eleLink.disabled = true;
+                if (eleLink.getAttribute('theme') === 'theme-dark') {
+                    eleLink.disabled = false;
+                }
+            });
+        }
     }
 };
 </script>
@@ -53,12 +73,12 @@ p {
 
 <style lang="scss" scoped theme="light">
 .favorite {
-    color: green;
+    color: $mark-color-light;
 }
 </style>
 
 <style lang="scss" scoped theme="dark">
 .favorite {
-    color: red;
+    color: $mark-color-dark;
 }
 </style>

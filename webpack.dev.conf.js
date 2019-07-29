@@ -58,7 +58,14 @@ module.exports = env => {
                             loader: MiniCssExtractPlugin.loader
                         },
                         'css-loader',
-                        'sass-loader'
+                        'sass-loader',
+                        {
+                            loader: 'sass-resources-loader',
+                            options: {
+                                // Or array of paths
+                                resources: ['./src/assets/styles/variables/_common.scss', './src/assets/styles/variables/_dark.scss', './src/assets/styles/variables/_light.scss']
+                            }
+                        }
                     ]
                 },
                 {
@@ -142,10 +149,34 @@ module.exports = env => {
                 title: 'Demo',
                 favicon: path.resolve(__dirname, './src/assets/img/favicon.png'),
                 filename: 'index.html',
-                template: 'index.html',
-                inject: true
+                template: 'index.ejs',
+                inject: false,
+                themeChunks:['theme-light', 'theme-dark'],
+                defaultThemeChunks:'theme-light'
             })
-        ]
+        ],
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    light: {
+                        name: 'theme-light',
+                        test: (m, c) => {
+                            return (m.constructor.name === 'CssModule' && new RegExp('-light.scss|theme=light').test(m._identifier))
+                        },
+                        chunks:'all',
+                        enforce: true
+                    },
+                    dark: {
+                        name: 'theme-dark',
+                        test: (m, c) => {
+                            return (m.constructor.name === 'CssModule' && new RegExp('-dark.scss|theme=dark').test(m._identifier))
+                        },
+                        chunks:'all',
+                        enforce: true
+                    }
+                }
+            }
+        }
     };
     return new Promise((resolve, reject) => {
         portfinder.basePort = 8080;
