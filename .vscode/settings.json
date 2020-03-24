@@ -22,5 +22,8 @@
     ],
     "prettier.eslintIntegration": true,
     "prettier.tabWidth": 4,
-    "vetur.format.defaultFormatter.html":"prettier"
+    "vetur.format.defaultFormatter.html": "prettier",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
 }
